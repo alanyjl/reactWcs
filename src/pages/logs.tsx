@@ -22,6 +22,7 @@ import {
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import { getCardStyle } from '../theme/sharedStyles'; // 💡 导入共享样式
+import { myFetch } from '../utils/request';
 
 interface LogEntry {
   id: number;
@@ -219,7 +220,7 @@ export default function Logs() {
   const fetchLogs = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/logs?limit=${limit}`);
+      const response = await myFetch(`/api/logs?limit=${limit}`);
       if (response.ok) {
         const data = await response.json();
         const sortedData = data.sort(

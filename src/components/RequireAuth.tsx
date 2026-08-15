@@ -10,7 +10,7 @@ import {
   Box,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
+import { myFetch } from '../utils/request';
 interface RequireAuthProps {
   children: React.ReactNode;
 }
@@ -49,7 +49,7 @@ export const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
     setErrorMsg('');
 
     try {
-      const response = await fetch(
+      const response = await myFetch(
         `/api/login?username=${loginForm.username}&pwd=${loginForm.pwd}`,
       );
       const result = await response.text();
