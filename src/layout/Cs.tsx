@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import {
   AppBar,
   Box,
@@ -10,7 +10,6 @@ import {
   Divider,
   List,
   type Theme,
-  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,

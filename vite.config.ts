@@ -5,16 +5,21 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3300, // 修改为你想用的端口
+    port: 5400, // 修改为你想用的端口
     open: true, // 启动后自动打开浏览器
     host: '0.0.0.0', // 允许局域网访问
     strictPort: false, // 若端口被占用，自动尝试下一个可用端口
     proxy: {
       // 当请求以 /api 开头时，代理到后端服务
       '/api': {
-        target: 'http://localhost:5300', // 填入你后端的实际运行端口
+        target: 'http://localhost:5020', // 填入你后端的实际运行端口
         changeOrigin: true,
         secure: false,
+      },
+      // 代理 SignalR 长连接
+      '/hubs': {
+        target: 'http://localhost:5020',
+        ws: true, // 支持 WebSocket 转发
       },
     },
   },
