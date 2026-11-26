@@ -18,7 +18,7 @@ export default defineConfig({
       },
       // 代理 SignalR 长连接
       '/hubs': {
-        target: 'http://localhost:5020',
+        target: 'http://localhost:8010',
         ws: true, // 支持 WebSocket 转发
       },
     },
